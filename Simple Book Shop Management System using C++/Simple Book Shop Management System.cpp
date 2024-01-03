@@ -23,12 +23,13 @@ public:
 	int search(char[],char[]);
 	void buybook();
 	void displayshelf();
+	void removebook();
 
 };
 
 void book::feeddata()	{
 	cin.ignore();
-	cout<<"\nEnter Author Name: ";      cin.getline(author,20);
+	cout<<"\nEnter Author Name: ";     cin.getline(author,20);
 	cout<<"Enter Title Name: ";       cin.getline(title,20);
 	cout<<"Enter Publisher Name: ";   cin.getline(publisher,20);
 	cout<<"Enter Price: ";            cin>>*price;
@@ -44,6 +45,24 @@ void book::editdata()	{
 	cout<<"Enter Price: ";            cin>>*price;
 	cout<<"Enter Stock Position: ";   cin>>*stock;
 
+}
+
+void book::removebook() {
+	char removeTitle[20];
+	char removeAuthor[20];
+	cout<<"\nRemove a Book from Shelf: ";
+	cout<<"\nEnter Title Name: "; 
+	cin.ignore();
+	cin.getline(removeTitle, 20);
+	cout<<"\nEnter Author Name: ";
+	cin.getline(removeAuthor, 20);
+
+	if (strcmp(title, removeTitle) == 0 && strcmp(author, removeAuthor) == 0) {
+		// add logic for removing book
+		cout<<"Successfully removed book";
+	} else {
+		cout<<"\nUnable to remove book";
+	}
 }
 
 void book::showdata()	{
@@ -95,7 +114,8 @@ int main()	{
 		<<"\n3. Buy Book"
 		<<"\n4. Search For Book"
 		<<"\n5. Edit Details Of Book"
-		<<"\n6. Exit"
+		<<"\n6. Remove a Book from Shelf"
+		<<"\n7. Exit"
 		<<"\n\nEnter your Choice: ";
 		cin>>choice;
 
@@ -154,7 +174,13 @@ int main()	{
 				cout<<"\nThis Book is Not in Stock";
 				break;
 
-			case 6: exit(0);
+			case 6: cin.ignore();	
+			  for(t = 0; t < i; t++) {
+				B[t]->removebook();
+				break;
+			  }
+
+			case 7: exit(0);
 			default: cout<<"\nInvalid Choice Entered";
 
 		}
