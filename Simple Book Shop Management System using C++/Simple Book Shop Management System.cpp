@@ -22,6 +22,7 @@ public:
 	void showdata();
 	int search(char[],char[]);
 	void buybook();
+	void displayshelf();
 
 };
 
@@ -54,6 +55,15 @@ void book::showdata()	{
 
 }
 
+void book::displayshelf() {
+	cout<<"\nCurrent Books in Shelf: ";
+	cout<<"\nTitle Name: "<<title;
+	cout<<"\nAuthor Name: "<<author;
+	cout<<"\nPublisher Name: ";
+	cout<<"\nPrice: "<<*price;
+	cout<<"\nStock Position: "<<*stock;
+}
+
 int book::search(char tbuy[20],char abuy[20] )	{
 	if(strcmp(tbuy,title)==0 && strcmp(abuy,author)==0)
 		return 1;
@@ -81,10 +91,11 @@ int main()	{
 	while(1)	{
 		cout<<"\n\n======Book Shop Management System======"
 		<<"\n1. Entry of New Book"
-		<<"\n2. Buy Book"
-		<<"\n3. Search For Book"
-		<<"\n4. Edit Details Of Book"
-		<<"\n5. Exit"
+		<<"\n2. Display Current Book in Shelf"
+		<<"\n3. Buy Book"
+		<<"\n4. Search For Book"
+		<<"\n5. Edit Details Of Book"
+		<<"\n6. Exit"
 		<<"\n\nEnter your Choice: ";
 		cin>>choice;
 
@@ -93,7 +104,14 @@ int main()	{
 				B[i]->feeddata();
 				i++;	break;
 
+			// case 2 for displaying current book 	
 			case 2: cin.ignore();
+			  for(t = 0; t < 1; t++) {
+				B[t]->displayshelf();
+				break;
+			  } 	
+
+			case 3: cin.ignore();
 				cout<<"\nEnter Title Of Book: "; cin.getline(titlebuy,20);
 				cout<<"Enter Author Of Book: ";  cin.getline(authorbuy,20);
 				for(t=0;t<i;t++)	{
@@ -106,7 +124,7 @@ int main()	{
 				cout<<"\nThis Book is Not in Stock";
 
 				break;
-			case 3: cin.ignore();
+			case 4: cin.ignore();
 				cout<<"\nEnter Title Of Book: "; cin.getline(titlebuy,20);
 				cout<<"Enter Author Of Book: ";  cin.getline(authorbuy,20);
 
@@ -121,7 +139,7 @@ int main()	{
 				cout<<"\nThis Book is Not in Stock";
 				break;
 
-			case 4: cin.ignore();
+			case 5: cin.ignore();
 				cout<<"\nEnter Title Of Book: "; cin.getline(titlebuy,20);
 				cout<<"Enter Author Of Book: ";  cin.getline(authorbuy,20);
 
@@ -136,7 +154,7 @@ int main()	{
 				cout<<"\nThis Book is Not in Stock";
 				break;
 
-			case 5: exit(0);
+			case 6: exit(0);
 			default: cout<<"\nInvalid Choice Entered";
 
 		}
