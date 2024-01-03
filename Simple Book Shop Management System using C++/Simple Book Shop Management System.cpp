@@ -4,13 +4,13 @@
 
 using namespace std;
 
-class book	{
+class book {
 private:
 	char *author,*title,*publisher;
 	float *price;
 	int *stock;
 public:
-	book()	{
+	book() {
 	author= new char[20];
 	title=new char[20];
 	publisher=new char[20];
@@ -27,24 +27,31 @@ public:
 
 };
 
-void book::feeddata()	{
+void book::feeddata() {
 	cin.ignore();
-	cout<<"\nEnter Author Name: ";     cin.getline(author,20);
-	cout<<"Enter Title Name: ";       cin.getline(title,20);
-	cout<<"Enter Publisher Name: ";   cin.getline(publisher,20);
-	cout<<"Enter Price: ";            cin>>*price;
-	cout<<"Enter Stock Position: ";   cin>>*stock;
-
+	cout<<"\nEnter Author Name: ";     
+	cin.getline(author,20);
+	cout<<"Enter Title Name: ";       
+	cin.getline(title,20);
+	cout<<"Enter Publisher Name: ";   
+	cin.getline(publisher,20);
+	cout<<"Enter Price: ";            
+	cin>>*price;
+	cout<<"Enter Stock Position: ";   
+	cin>>*stock;
 }
 
-void book::editdata()	{
-
-	cout<<"\nEnter Author Name: ";      cin.getline(author,20);
-	cout<<"Enter Title Name: ";       cin.getline(title,20);
-	cout<<"Enter Publisher Name: ";   cin.getline(publisher,20);
-	cout<<"Enter Price: ";            cin>>*price;
-	cout<<"Enter Stock Position: ";   cin>>*stock;
-
+void book::editdata() {
+	cout<<"\nEnter Author Name: ";      
+	cin.getline(author,20);
+	cout<<"Enter Title Name: ";       
+	cin.getline(title,20);
+	cout<<"Enter Publisher Name: ";   
+	cin.getline(publisher,20);
+	cout<<"Enter Price: ";            
+	cin>>*price;
+	cout<<"Enter Stock Position: ";   
+	cin>>*stock;
 }
 
 void book::removebook() {
@@ -60,18 +67,18 @@ void book::removebook() {
 	if (strcmp(title, removeTitle) == 0 && strcmp(author, removeAuthor) == 0) {
 		// add logic for removing book
 		cout<<"Successfully removed book";
-	} else {
+	} 
+	else {
 		cout<<"\nUnable to remove book";
 	}
 }
 
-void book::showdata()	{
+void book::showdata() {
 	cout<<"\nAuthor Name: "<<author;
 	cout<<"\nTitle Name: "<<title;
 	cout<<"\nPublisher Name: "<<publisher;
 	cout<<"\nPrice: "<<*price;
 	cout<<"\nStock Position: "<<*stock;
-
 }
 
 void book::displayshelf() {
@@ -87,14 +94,13 @@ int book::search(char tbuy[20],char abuy[20] )	{
 	if(strcmp(tbuy,title)==0 && strcmp(abuy,author)==0)
 		return 1;
 	else return 0;
-
 }
 
-void book::buybook()	{
+void book::buybook() {
 	int count;
 	cout<<"\nEnter Number Of Books to buy: ";
 	cin>>count;
-	if(count<=*stock)	{
+	if(count<=*stock) {
 		*stock=*stock-count;
 		cout<<"\nBooks Bought Sucessfully";
 		cout<<"\nAmount: $"<<(*price)*count;
@@ -119,10 +125,11 @@ int main()	{
 		<<"\n\nEnter your Choice: ";
 		cin>>choice;
 
-		switch(choice)	{
+		switch(choice) {
 			case 1:	B[i] = new book;
 				B[i]->feeddata();
-				i++;	break;
+				i++;	
+				break;
 
 			// case 2 for displaying current book 	
 			case 2: cin.ignore();
@@ -134,8 +141,8 @@ int main()	{
 			case 3: cin.ignore();
 				cout<<"\nEnter Title Of Book: "; cin.getline(titlebuy,20);
 				cout<<"Enter Author Of Book: ";  cin.getline(authorbuy,20);
-				for(t=0;t<i;t++)	{
-					if(B[t]->search(titlebuy,authorbuy))	{
+				for(t=0;t<i;t++) {
+					if(B[t]->search(titlebuy,authorbuy)) {
 						B[t]->buybook();
 						break;
 					}
@@ -148,8 +155,8 @@ int main()	{
 				cout<<"\nEnter Title Of Book: "; cin.getline(titlebuy,20);
 				cout<<"Enter Author Of Book: ";  cin.getline(authorbuy,20);
 
-				for(t=0;t<i;t++)	{
-					if(B[t]->search(titlebuy,authorbuy))	{
+				for(t=0;t<i;t++) {
+					if(B[t]->search(titlebuy,authorbuy)) {
 						cout<<"\nBook Found Successfully";
 						B[t]->showdata();
 						break;
@@ -163,8 +170,8 @@ int main()	{
 				cout<<"\nEnter Title Of Book: "; cin.getline(titlebuy,20);
 				cout<<"Enter Author Of Book: ";  cin.getline(authorbuy,20);
 
-				for(t=0;t<i;t++)	{
-					if(B[t]->search(titlebuy,authorbuy))	{
+				for(t=0;t<i;t++) {
+					if(B[t]->search(titlebuy,authorbuy)) {
 						cout<<"\nBook Found Successfully";
 						B[t]->editdata();
 						break;
@@ -185,9 +192,5 @@ int main()	{
 
 		}
 	}
-
-
-
-
 	return 0;
 }
